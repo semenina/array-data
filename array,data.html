@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    // 1) создать функцию, которая принимает и возвращает новый массив с дублированными эелементами =)
+
+    var arr = [1, 2, 3];
+
+        function concatArray(arr){
+            var newArr = [];
+            newArr = arr.slice();
+            newArr = arr.concat(newArr);
+            return newArr;
+        }
+    console.log(copyArray(arr));
+    // или еще вариант
+
+        function copyArray(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++){
+                newArr[i] = arr[i];
+            }
+            newArr = arr.concat(newArr);
+            return newArr;
+        }
+    console.log(copyArray(arr));
+
+    //    2. Получить последний элемент массива не меняя его =)
+
+    var arr = [1, 2, 3, {name: "Olga"}];
+
+        function lastObj(arr){
+            var newArr = arr.slice(-1);
+            return newArr;
+        }
+    console.log(lastObj(arr));
+    console.log(arr);
+
+    //    3 Функция, кот. принимает число N  и возвращает массив, заполненный числами от 1 до N: getArray(10) =)
+
+        function getArray(num) {
+
+            var arr = [];
+            for (var i = 0; i < num; i++) {
+                arr[i] = i+1;
+                arr[0] = 9999;
+            }
+            return arr;
+        }
+        console.log(getArray(10));
+
+    //4 Функция, кот.принимает произвольное число массивов и удалаяет из каждого массива первый эл-т и возвращает новый массив =))
+
+        var arr = [1, 2, 3];
+        var arr1 = ["мама мыла раму", 25, "some string", {age :60, name: "Vasya"}];
+        var arr2 = ["aujym", "вода", 50]
+
+            function changeCollection() {
+               var newArray = [];
+                var elem;
+
+                for(var i = 0; i < arguments.length; i++){
+                    newArray[i] = arguments[i];
+                     newArray[i].shift();
+                     }
+                     return newArray;
+                    }
+            console.log (changeCollection( arr1, arr, arr2));
+
+    //    Массивы. Задачи
+    //    1. Упорядочить буквы по алфавиту и вернуть строку с буквами в обратном порядке =)
+
+        var str = "somestringforsort";
+
+        function sortStr(a, b) {
+            if (a > b) return -1;
+            if (a < b) return 1;
+        }
+
+        function reverce(str) {
+            var arr = str.split("");
+            return arr.sort(sortStr).reverse().join();
+        }
+        console.log(reverce(str));
+
+    //    2. Отсортировать массив в обратном порядке. =)
+
+        var arr = [2, 4, 7, 1, -2, 10, -9];
+
+            function sortNum(a, b){
+                return a - b;
+            }
+
+            function reverceSort(arr) {
+             return arr.sort(sortNum).reverse();
+            }
+            console.log(reverceSort(arr));
+
+    //    3. Функция, кот. принимает три аргумента, произвольный массив и 2 числа, первое из кот-х озн. начальный номер элемента массива, второй - конечный. Вернуть массив из элементов первой коллекции (с -по) =)
+
+                var arr = ["a","b","c","d","e"];
+
+                function getNewArray(arr, val1, val2){
+                    var newArr = [];
+                    newArr = arr.slice(val1, val2+1);
+                    return newArr;
+                }
+                console.log(getNewArray(arr, 2,4));
+
+    //        4) Удвоить все элементы массива. =)
+
+            var arr = ["one", "two", "three", 4];
+
+            function doubleArray(arr){
+               var arr1 = [];
+                arr1 = arr.slice();
+                return arr.concat(arr1);
+            }
+            console.log(doubleArray(arr));
+
+    //    5. Удалить 2 и 3 аргументы из массива =)
+
+            var arr = [1, 2, 3, 4, 5];
+
+            function delArg(arr, val1,val2) {//
+                arr.splice(val1, val2);
+                return arr;
+            }
+            console.log(delArg(arr, 2,2));
+
+    //    6. Удалить из массива 2 и 3 элементы и вставить вместо них "three", "four" =)
+
+                var arr = [1, 2, 3, 4, 5];
+                var spliceArr = [];
+                spliceArr = arr.splice(2,2,"three", "four");
+                console.log(arr);
+
+    // 7. Вставить в произвольный массив после 3-го элемента, любое значение. =)
+
+        var arr = ["I","am","an","array"];
+        var str = "some new str"
+        var arr2 = arr.splice(3, 0, str);
+        console.log(arr);
+
+    //    8. Отсортировать массив массивов так, что бы в начале были наименьшие массивы.
+
+        var arr = [
+            ["a", "b", "c", "d", "e"],
+            [1],
+            ["one", "two", "three", 4]
+        ];
+
+            function sortArrayes(a, b){
+                return a.length - b.length;
+            }
+
+            function mainFunc(arr){
+                return arr.sort(sortArrayes);
+            }
+        console.log(mainFunc(arr)) ;
+
+//        9) Создать копию произвольного массива =)
+
+    var arr = ["one", "two", "three", 4];
+
+    function cloneArray(arr) {
+        var newArr = arr.slice();
+        return newArr;
+    }
+    cloneArray(arr);
+
+    // 10. Отсортировать массив по колличеству ядер =)
+
+    var arr = [
+        {cpu: "intel", info: {cores: 2, cache: 3}},
+        {cpu: "intel", info: {cores: 4, cache: 4}},
+        {cpu: "amd", info: {cores: 1, cache: 1}},
+        {cpu: "intel", info: {cores: 3, cache: 2}},
+        {cpu: "amd", info: {cores: 4, cache: 2}}
+    ];
+
+    function sortCores(a, b) {
+        if(a.info.cores > b.info.cores) return 1;
+        if(a.info.cores < b.info.cores) return -1;
+    }
+
+    function sortArray(arr) {
+        return arr.sort(sortCores);
+    }
+    sortArray(arr);
+
+//    11. Функция, кот. принимает массив продуктов и возвращает продукты цена кот. находится в указанном диапазоне. =)
+
+    var products = [
+        {title: "prod1", price: 5.2},{ title: "prod2", price: 0.18},
+        {title: "prod3", price: 15}, {title: "prod4", price: 25},
+        {title: "prod5", price: 18.9}, {title: "prod6", price: 8},
+        {title: "prod7", price: 19}, {title: "prod8", price: 63}
+    ];
+
+    function sortPrice(a, b) {
+        return a.price - b.price;
+    }
+
+    function filterCollection(arr, val1, val2) {
+        var newArr = [];
+
+        for(var i =0; i < arr.length; i++){
+            if(arr[i].price >= val1 && arr[i].price <= val2){
+                newArr[i] = arr[i];
+            }
+        }
+        return newArr.sort(sortPrice);
+    }
+ filterCollection(products, 15 , 30);
+
+// ------------Data-------------------
+
+//    1. Написать функцию, кот. принимает год, а возвращаеет день 1-го января этого года на русском языке
+
+    var date = new Date(2016, 0);
+
+    var options = {
+        weekday: "long"
+     };
+
+    function getDate(year) {
+        return date.toLocaleString("ru", options)
+    }
+    console.log(getDate(date));
+
+//    2 Написать функцию, которая принимает дату в виде строки, а возвращет день  в русском формате
+
+    var date = new Date(1985, 02, 29);
+    var options = {
+            weekday: "long"
+         };
+
+         function backDate(str) {
+             return date.toLocaleString("ru", options);
+         }
+         console.log(backDate(date));
+
+
+
+
+</script>
+
+
+</body>
+</html>
