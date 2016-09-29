@@ -227,28 +227,34 @@
 
     var date = new Date(2016, 0);
 
-    var options = {
-        weekday: "long"
-     };
-
     function getDate(year) {
-        return date.toLocaleString("ru", options)
+        return date.toLocaleString("ru",{ weekday: "long"})
     }
+    console.log(date);
     console.log(getDate(date));
 
 //    2 Написать функцию, которая принимает дату в виде строки, а возвращет день  в русском формате
 
-    var date = new Date(1985, 02, 29);
-    var options = {
-            weekday: "long"
-         };
+        var date = "29.03.1985";
 
-         function backDate(str) {
-             return date.toLocaleString("ru", options);
-         }
-         console.log(backDate(date));
+    function backDate(date) {
 
+        var newDate = date.split(".");
+        var day = newDate[0];
+        var month = newDate[1] - 1;
+        var year = newDate[2];
+        var dayOfWeek = new Date(year, month, day);
+        return dayOfWeek.toLocaleString("ru", {weekday: "long"});
+    }
+    console.log(backDate(date));
+//
+// 3 Узнать сколько прошло полных недель с начала года.
 
+    var today = new Date();
+    var startDate = new Date(2016, 0);
+    var dif = today - startDate;
+    var countWeek = Math.floor(dif/1000/3600/24/7);
+    console.log("Полных недель с начала года прошло " + countWeek);
 
 
 </script>
